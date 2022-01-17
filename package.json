@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "postinstall": "ngcc",
-    "start": "ng serve",
+    "start": "node --optimize_for_size --max_old_space_size=460 dist/main.j",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
