@@ -1,0 +1,222 @@
+.social-links{
+	margin: auto;
+	text-align: center;
+}
+.social-links img{
+	max-width: 30px !important;
+}
+.social-links li{
+	margin-left: 18px;
+	margin-right: 18px;
+}
+.cancel{
+    right: 3%;
+    padding: 0px;
+    width: 30px;
+    background: #fefefe;
+    border-radius: 50%;
+    height: 30px;
+    border: 2px solid #9e9e9e;
+    min-width: 30px;
+    line-height: 30px;
+}
+@media only screen and (min-width: 500px) and (max-width: 1000px){
+    div.matlogactionscancel{right: 5px;}
+}
+@media only screen and (max-width: 500px){
+    div.matlogactionscancel{right: 5px;}
+}
+@media only screen and (min-width: 1000px){
+    .matlogactionscancel{
+        position: absolute;
+        right: 5px;
+        top: 6%;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+    div.matlogactionscancel{top: -7px;}
+    .cancel{position: relative;left:0;right: 0;}
+    div.matlogactionscancel mat-icon{left: -2px;}
+}
+
+
+
+.matlogactionscancel{
+	position: absolute;
+    right: 5px;
+    top: 6%;
+    width: 30px;
+    z-index: 9999;
+    height: 30px;
+}
+.matlogactionscancel mat-icon{
+	font-size: 24px;
+    padding-bottom: 0px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #bababa;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    text-align: center;
+}
+.signupusing{
+	text-transform: uppercase;
+	text-align: center;
+	color: #000000;
+	font-size: 20px;
+	margin-top: 6px;
+	margin-bottom: 10px;
+    font-family: 'Nunitosans-SemiBold';
+}
+.fancy-title.title-dotted-border {
+    background: url('/assets/images/line.png') repeat-x center;    max-width: 50%;
+    margin: 34px auto 20px;
+    text-align: center;
+}
+.fancy-title.title-dotted-border .headingmyss{
+	font-size: 15px;
+	background: var(--themecolor);
+	color: #ffffff;
+	display: inline;
+    border-radius: 50%;
+    padding: 7px;
+}
+mat-form-field{
+	width: 100%;
+	font-size: 14px;
+	color: #000000;
+}
+.signupform mat-icon{
+	top: 6px;
+    position: relative;
+    color: #000000;
+}
+mat-checkbox, mat-checkbox button, mat-checkbox a{
+    font-size: 14px;
+}
+mat-checkbox button, mat-checkbox a{
+	color: var(--themecolor);
+    padding-left: 4px;
+}
+.createacc{
+	height: var(--buttonheight);
+    border-radius: var(--buttonradius);
+    background: var(--themecolor);
+    font-size: var(--buttonfontsize);
+    text-transform: var(--buttontransform);
+    color: var(--buttontextcolor);
+	
+    text-align: center;
+    margin: auto;
+    letter-spacing: 2px;
+  
+    width: 100%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 20px;
+    
+}
+div button.alreadysignin{
+	color: var(--themecolor);
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0px auto;
+    letter-spacing: 2px;
+    font-size: 13px;
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-left: 0px;
+}
+@media only screen and (max-width: 767px) and (max-height: 500px){
+        h4.signupusing{margin-top: 0px;}
+}
+@media only screen and (max-width: 767px) and (min-height: 500px){
+    div.social-links img{max-width: 25px !important;}
+    div.fancy-title.title-dotted-border{display: none;}
+    h4.signupusing{margin-bottom: 7px;}
+}
+@media only screen and (min-width: 767px) and (max-height: 500px){
+    div.social-links img{max-width: 25px !important;}
+    div.fancy-title.title-dotted-border{display: none;}
+    h4.signupusing{margin-bottom: 7px;margin-top: 0px;}
+    mat-form-field{width: calc(50% - 10px);margin-left: 5px;margin-right: 5px;}mat-form-field.emailaddress{width: 100%;}
+    button.createacc{width: 45%;font-size: 12px}
+    div button.alreadysignin{width: 55%;margin-top: -20px;}
+    div.social-links ul{margin-bottom: 5px;}
+}
+@media only screen and (max-width: 600px) and (max-height: 400px){
+    div.matactionsbuttonsignup button.createacc, div.matactionsbuttonsignup button.alreadysignin{width: 100%;}
+}
+@media only screen and (max-width: 767px){
+    
+    button.cancel{right: 3%;}
+}
+@media only screen and (max-width: 991px){
+    .signupform mat-icon{top: 3px;}
+}
+div.mat-dialog-content{
+    margin: 0px;padding: 0px
+}
+
+
+@media only screen and (min-width: 521px) and (max-width: 767px){
+    .card{
+        margin: auto;
+        top: 0px;
+        bottom: 0px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        background-color: antiquewhite;    }
+    div.social-links img{
+        max-width: 25px !important;
+    }
+    .fancy-title.title-dotted-border {
+        max-width: 50%;
+        margin: 16px auto 20px;
+        text-align: center;
+    }
+    .fancy-title.title-dotted-border .headingmyss{
+        font-size: 12px;
+        padding: 4px;
+    }
+    .signupusing{
+        margin-bottom: 10px;font-size: 18px;
+    }
+    mat-form-field{
+        width: 48%;
+    }
+    mat-form-field.firstdivintwo{
+        margin-right: 2%;
+    }
+    mat-form-field.lastdivintwo{
+        margin-left: 2%;
+    }
+    button.createacc{margin-bottom: 10px;}
+    button.alreadysignin{margin-top: -7px !important;}
+    mat-form-field.emailaddress{width: 100%;}
+    div.fancy-title.title-dotted-border{display: none;}
+    div button.createacc, div button.alreadysignin{width: 50%;display: inline-block;font-size: 14px;}
+    
+}
+
+.card{
+    max-width: 500px;
+    height: 82%;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: antiquewhite;
+    margin-top: 100px;
+}

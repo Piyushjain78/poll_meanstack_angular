@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.error {
+    width: 100%;
+}
+
+/* code for scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #999; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #666; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #e4e4e4;; 
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+    background: #999; 
+}
+
+/* Resizer */
+::-webkit-resizer {
+    background: #999; 
+}
+
+/* code for scrollbar ends here*/

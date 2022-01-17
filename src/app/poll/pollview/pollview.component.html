@@ -1,0 +1,63 @@
+<!-- display poll question on poll profile page-->
+<div *ngIf="item" class="mt-5 mb-4">
+    <p style="font-size: 25px;" class="lead"><b class="text-break">{{item.question}}</b></p>
+    <p style="font-size: 20px;" class="lead mt-5 text-break">Created By: {{item.userName}}</p>
+</div>
+
+<div *ngIf="item" class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        <div *ngFor="let option of item_options; let i = index;" class="row">
+            <div *ngIf="option.value" (click)="postVote(item._id, i+1)" class="col-12">
+                <div class="avoid_page_break mb-4">
+                    <div [id]=item._id+i class="hov card">
+                        <div style="position: relative;" class="card-body">
+            
+                        <!-- show options questions and there vote percentage too -->
+                        <div class="d-flex flex-row">
+                            <div class="form-check pl-0"><label class="rad-label"><input type="radio" [checked] = "(this.poll_option_id == item._id+i) ? true : false" class="rad-input d-flex align-items-md-start align-items-sm-start mb-2 mt-1 form-check-input" name="exampleRadios" id="id[i]"/><div class="rad-design"></div></label></div>
+                            <div for="id[i]" class="d-flex align-items-md-start align-items-sm-start mb-2 ml-1"><span class="pl-1 pr-1"><b class="text-break">{{option.value}}</b></span></div>
+                            <div for="" *ngIf="(item.optionsResultTotal) != 0" class="d-flex ml-auto"><b [ngClass] = "progress_bar_text_colors[i]">{{((item.optionsResult["option_"+(i+1)]/item.optionsResultTotal)*100).toFixed(0)}}%</b></div>
+                            <div for="'exampleRadios'+[i]" *ngIf="(item.optionsResultTotal) == 0" class="d-flex ml-auto"><b [ngClass] = "progress_bar_text_colors[i]">0%</b></div>        
+                        </div>  
+
+                        <div><p style="font-size: 1.5rem;" class="card-title lead mb-2">
+                            <b></b>
+                        </p></div>
+                        
+                        <!-- vote progress bar -->
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" [ngClass] = "progress_bar_colors[i]" [ngStyle] = "{'width': (item.optionsResult['option_'+(i+1)]/item.optionsResultTotal)*100+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <!-- display number of votes -->
+                        <div>
+                            <small style="font-size: 1rem;" class="text-muted lead">{{item.optionsResult["option_"+(i+1)]}} Votes</small>
+                        </div>
+                        <!-- end -->
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+        <!-- Edit and Delete button of poll -->
+        <button *ngIf="isUserAuthenticated && isUserAuthorized" (click)="editPollDialog(item._id)" class="btn btn-success button_width hov">EDIT POLL</button><br>
+        <button *ngIf="isUserAuthenticated && isUserAuthorized" (click)="deletePollDialog(item._id)" class="btn btn-danger button_width hov mt-4">DELETE POLL</button>
+        <div class="mt-4 mb-4">
+            <div class="card border-info button_width">
+                <div class="card-header">Total Votes</div>
+                <div class="card-body text-info">
+                  <!-- <h5 class="card-title"></h5> -->
+                  <p class="card-title lead"><b style="font-size: 40px;">{{item.optionsResultTotal}}</b></p>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<!-- error message -->
+<div class="error" *ngIf="errorMessage">
+    <img src="../../../assets/{{ERROR_404_GIF}}" >
+</div>

@@ -1,0 +1,108 @@
+<div *ngIf="!isEditable" class="text-info" style="font-size:20px;text-align: center;">CREATE POLL
+  <button mat-dialog-close type="button" class="close" style="float: right; outline: none;"><span aria-hidden="true">&times;</span></button>
+</div>
+<div *ngIf="isEditable" class="text-info" style="font-size:20px;text-align: center;">EDIT POLL  
+  <button mat-dialog-close type="button" class="close" style="float: right; outline: none;"><span aria-hidden="true">&times;</span></button>
+</div>
+
+<form *ngIf="!isEditableError" (ngSubmit)="isEditable ? editPoll(pollModel) : addPoll()" #pollForm="ngForm" class="mt-5">
+  <div class="form-group">
+    <label class="text-info" for="question_id">QUESTION</label>
+    <input type="text" class="pl-0 pb-4 pt-3 form-control" id="question_id" placeholder="What's your poll Question?"
+      name="question" formcontrolname="question" [(ngModel)]="pollModel.question" #question="ngModel" required 
+    >
+    <div [hidden]="question.valid || question.pristine"
+      class="alert mt-4 alert-danger">
+      Poll Question is Required
+    </div>
+  </div>
+  <div class="form-group mb-0">
+    <label class="text-info" for="datetime_id">EXPIRATION</label><br>
+    <mat-form-field class="width_100">
+      <input readonly id="datetime_id" matInput [ngxMatDatetimePicker]="picker" 
+        placeholder="Choose start date" 
+        [min]="minDate"
+        [disabled]="startdate_disabled"
+        formcontrolname="start"
+        [(ngModel)]="pollModel.start" name="start"  #start="ngModel" required
+        >
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)">
+      </mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker 
+        [showSpinners]="showSpinners" 
+        [showSeconds]="showSeconds"
+        [stepHour]="stepHour" [stepMinute]="stepMinute" 
+        [stepSecond]="stepSecond"
+        [touchUi]="touchUi"
+        [color]="color" [enableMeridian]="enableMeridian"
+      >
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <div [hidden]="start.valid || start.pristine"
+      class="alert mt-3 alert-danger">
+      Start Date Time is Required
+    </div>
+  </div>
+  <div class="form-group mb-0">
+    <mat-form-field class="width_100">
+      <input readonly id="enddatetime_id" matInput [ngxMatDatetimePicker]="endpicker" 
+        placeholder="Choose end date" 
+        [min]="minDate"
+        [disabled]="enddate_disabled"
+        formcontrolname="expiry"
+        [(ngModel)]="pollModel.expiry" name="expiry" #expiry="ngModel" required
+        >
+      <mat-datepicker-toggle matSuffix [for]="$any(endpicker)">
+      </mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #endpicker 
+        [showSpinners]="showSpinners" 
+        [showSeconds]="showSeconds"
+        [stepHour]="stepHour" [stepMinute]="stepMinute" 
+        [stepSecond]="stepSecond"
+        [touchUi]="touchUi"
+        [color]="color" [enableMeridian]="enableMeridian"
+      >
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+    <div [hidden]="expiry.valid || expiry.pristine"
+      class="alert mt-2 alert-danger">
+      End Date Time is Required
+    </div>
+  </div>
+  <div id="Options" class="form-group">
+      <label class="text-info" for="option1_id">OPTIONS</label>
+      <input name="option_1" formcontrolname="option_1" [(ngModel)]="pollModel.options.option_1" #option_1="ngModel" type="text" class="pl-0 pb-4 pt-3 form-control" id="option1_id" placeholder="Option 1" required>
+      <div [hidden]="option_1.valid || option_1.pristine"
+        class="alert mt-3 alert-danger">
+        Option 1 is Required
+      </div>
+      <input name="option_2" formcontrolname="option_2" [(ngModel)]="pollModel.options.option_2" #option_2="ngModel" type="text" class="pl-0 pb-4 pt-4 form-control" id="option2_id" placeholder="Option 2" required>
+      <div [hidden]="option_2.valid || option_2.pristine"
+        class="alert mt-2 alert-danger">
+        Option 2 is Required
+      </div>
+      <div [hidden]="hideOptions.option3_id" style="position: relative;">
+        <span><input name="option_3" formcontrolname="option_3" [(ngModel)]="pollModel.options.option_3" #option_3="ngModel" type="text" class="pl-0 pb-4 pt-4 form-control" id="option3_id" placeholder="Option 3"></span>
+        <span *ngIf="this.count == 3" (click) = "removeOptions('option3_id')" style="position: absolute;right: 0;top: 10px;" ><i class="fa fa-close"></i></span>
+      </div>
+      <div [hidden]="hideOptions.option4_id" style="position: relative;">
+        <span><input name="option_4" formcontrolname="option_4" [(ngModel)]="pollModel.options.option_4" #option_4="ngModel" type="text" class="pl-0 pb-4 pt-4 form-control" id="option4_id" placeholder="Option 4"></span>
+        <span *ngIf="this.count == 4" (click) = "removeOptions('option4_id')" style="position: absolute;right: 0;top: 10px;"><i class="fa fa-close"></i></span>
+      </div>
+      <div [hidden]="hideOptions.option5_id" style="position: relative;">
+        <span><input name="option_5" formcontrolname="option_5" [(ngModel)]="pollModel.options.option_5" #option_5="ngModel" type="text" class="pl-0 pb-4 pt-4 form-control" id="option5_id" placeholder="Option 5"></span>
+        <span *ngIf="this.count >=5" (click) = "removeOptions('option5_id')" style="position: absolute;right: 0;top: 10px;"><i class="fa fa-close"></i></span>
+      </div>
+  </div>
+  <button class="mt-2" style="outline:none; border:none; border-radius: 20px;" mat-raised-button (click)="showOptions()" type="button" *ngIf="this.count < 5">+Add Option</button>
+  <div class="mt-4" *ngIf="!isEditable" style="text-align:center;"><button style="outline:none; border-radius: 20px;" [disabled]="!pollForm.form.valid" type="submit" class="btn btn-primary outline">Create Poll</button>
+  </div>
+  <div class="mt-4" *ngIf="isEditable" style="text-align:center;"><button style="outline:none; border-radius: 20px;" [disabled]="!pollForm.form.valid" type="submit" class="btn btn-primary outline">Edit Poll</button>
+  </div>  
+</form>
+
+<div *ngIf="isEditableError">
+  <img class="error" src="../../../assets/{{ERROR_404_GIF}}" >
+</div>
+
+

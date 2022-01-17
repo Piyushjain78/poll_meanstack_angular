@@ -1,0 +1,48 @@
+<div class="mt-5 mb-5">
+
+    <div class="mt-5 mb-5">
+        <h1 class="display-4">POLLS</h1>
+    </div>
+    
+    <div *ngIf="loading">
+       LOADING... 
+    </div>
+
+    <div *ngFor="let item of items, let i = index;" class="avoid_page_break mb-4">
+        <div [routerLink]="['/view']" [queryParams]="{id:item._id}" id={{item._id}} class="hov card">
+            <div style="position: relative;" class="card-body">
+            <div class="d-flex flex-row">
+                <div class="d-flex align-items-md-start align-items-sm-start mb-4"><span class="badge-info pl-1 pr-1">CREATED BY : {{item.userName}}</span></div>
+                <div class="d-flex align-items-md-end align-items-sm-end"><span class="badge badge-success">Total Votes : {{item.optionsResultTotal}}</span></div>    
+            </div>
+
+            <div (window:resize)="onResize($event)" ><p style="font-size: 1.5rem;" class="card-title lead mb-4">
+                <b *ngIf="screenWidth > 728" >{{item.question | slice:0:250 }}<span *ngIf="item.question.length > 250"> ...</span></b>
+                <b *ngIf="screenWidth < 728" >{{item.question | slice:0:100 }}<span *ngIf="item.question.length > 100"> ...</span></b>
+            </p></div>
+            
+            <div>
+                <small style="font-size: 1rem;" class="text-muted lead">{{item.start | date:'medium'}} - {{item.expiry | date:'medium'}}</small>
+            </div>
+            <!-- end -->
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="items == undefined">
+        NO POLLS CREATED YET
+    </div>
+
+</div>
+
+<!-- paginator -->
+<mat-paginator 
+    [length]=all_polls_count 
+    [pageSize]=paginator_obj.pageSize
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+    (page)="getPaginatorData($event)">
+</mat-paginator>
+    
+    

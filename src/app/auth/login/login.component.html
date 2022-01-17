@@ -1,0 +1,35 @@
+<div style="width:93%" class="card">
+    <div class="card-body">
+        <mat-card-content>
+            <h4 class="signupusing mt-4 mb-4">Login!!</h4>
+            <form class="loginform"  #loginform="ngForm" (ngSubmit)="doLogin()">
+                <mat-form-field class="mb-3 emailaddress">
+                    <mat-icon matPrefix class="material-icons-outlined">email</mat-icon>
+                    <input type="email" matInput placeholder="Email Address" name="email"  formcontrolname="email" [(ngModel)]="loginModel.email"
+                    #email="ngModel" email required (ngModelChange)="checkEmail()">
+                </mat-form-field>
+                <div
+                    [hidden]="!errorflag"
+                    class="alert alert-danger">
+                    <div>
+                        Not a valid email, please check
+                    </div>
+                </div>
+
+                <mat-form-field class="mb-3 mt-3 firstdivintwo">
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="loginModel.password"
+                    #password="ngModel" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <div mat-dialog-actions class="text-center matactionsbuttonsignup" >
+                    <button class="createacc mt-3 mb-2" mat-button  type="submit" [disabled]="!loginform.form.valid">Login</button>
+                    <button routerLink="/signup" class="mt-3 alreadysignin" mat-button>Create Account</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </div>
+</div>

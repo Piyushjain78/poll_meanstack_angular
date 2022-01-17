@@ -1,0 +1,69 @@
+<div id="mynav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closed()">&times;</a>
+  <button [routerLink]="url[0]" routerLinkActive="active-link" (click)="closed()" mat-button color="{{button_color}}" class="example-icon button-border" aria-label="Example icon-button with share icon">
+      <span>Home</span> 
+  </button>
+  <button [hidden]="!isUserAuthenticated" (click)="add()" routerLinkActive="active-link" mat-button color="{{button_color}}" class="example-icon button-border" aria-label="Example icon-button with share icon">
+      <span>Create Poll</span> 
+  </button>
+  <button [hidden]="isUserAuthenticated" [routerLink]="url[1]" routerLinkActive="active-link" (click)="closed()" mat-button color="{{button_color}}" class="example-icon button-border" aria-label="Example icon-button with heart icon">
+      <span>Login</span>
+  </button>
+  <button [hidden]="isUserAuthenticated" [routerLink]="url[2]" routerLinkActive="active-link" (click)="closed()" mat-button color="{{button_color}}" class="example-icon button-border" aria-label="Example icon-button with share icon">
+      <span>Signup</span>
+  </button>
+  <button [hidden]="!isUserAuthenticated" (click)="doLogout()" routerLinkActive="active-link" mat-button color="{{button_color}}" class="example-icon button-border" aria-label="Example icon-button with share icon">
+      <span>Logout</span>
+  </button>
+</div>  
+
+<div style="background-color: rgb(245, 245, 245);" class="container-fluid p-0">
+  
+   <div class="img">
+
+      <nav style="background-color: #f5f5f5;" class="navbar navbar-expand-lg pt-0 mt-3 pd-0">
+      <button mat-icon-button color="{{button_color}}" class="navbar-toggler" type="button" data-toggle="collapse"  aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <mat-icon (click)="opened()">menu</mat-icon>
+        </span>
+      </button>
+
+      <span [routerLink]="url[0]" class="mobile" style="font-size:20px;">My Poll</span>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li style="margin-top: 3px;" class="nav-item">
+                    <button [routerLink]="url[0]" routerLinkActive="active-link" mat-button color="{{button_color}}" class="button-border example-icon nav-link mt-2" aria-label="Example icon-button with share icon">
+                        <span>Home</span> 
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button [hidden]="!isUserAuthenticated" (click)="add()" routerLinkActive="active-link" mat-button color="{{button_color}}" class="button-border example-icon nav-link mt-2 pt-1" aria-label="Example icon-button with share icon">
+                        <span>Create Poll</span> 
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button [hidden]="!isUserAuthenticated" (click)="doLogout()" routerLinkActive="active-link" mat-button color="{{button_color}}" class="button-border example-icon nav-link mt-2 pt-1" aria-label="Example icon-button with share icon">
+                        <span>Logout</span>
+                    </button>
+                </li>
+                <li [hidden]="isUserAuthenticated" class="d-flex flex-row-reverse bd-highlight nav-item ml-5 mt-2" style="border: 1px solid black; height:43px;" >
+                  <button [hidden]="isUserAuthenticated" [routerLink]="url[1]" routerLinkActive="active-link" mat-button color="{{button_color}}" class="button-border example-icon" aria-label="Example icon-button with heart icon">
+                    <span>Login</span>
+                  </button>
+                  <button [hidden]="isUserAuthenticated" [routerLink]="url[2]" routerLinkActive="active-link" mat-button color="{{button_color}}" class="button-border example-icon" aria-label="Example icon-button with share icon">
+                      <span>Signup</span>
+                  </button>
+                </li>      
+
+              </ul>
+        </form>
+      </div>
+      </nav>
+
+  </div>
+
+</div>

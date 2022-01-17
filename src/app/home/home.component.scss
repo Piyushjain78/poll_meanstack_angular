@@ -1,0 +1,36 @@
+// .hov:hover {
+//     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// }
+.hov {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.width {
+    width: 100%;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+.text_align_left {
+    text-align:left;
+}
+.avoid_page_break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+.form-check-input {
+    margin-top: 7px;
+    cursor: pointer;
+}
+.form-check-label {
+    cursor: pointer;
+}
+.badge {
+    border-radius: 0px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    height: 32px;
+    right: 0;
+}
