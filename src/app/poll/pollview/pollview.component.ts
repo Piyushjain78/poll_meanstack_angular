@@ -33,6 +33,7 @@ export class PollviewComponent implements OnInit {
   userLoggedIn: Subscription = new Subscription;
   isUserAuthenticated: any = false;
   isUserAuthorized: any = false;
+  loading: boolean = true;
 
   constructor(private route: ActivatedRoute, private pollService: PollService, public voteService: VoteService, public dialog:MatDialog, private authService: AuthService) { 
     // if token is present then user is authenticated else not
@@ -47,6 +48,7 @@ export class PollviewComponent implements OnInit {
           this.isUserAuthorized = true;
         }
       });
+      this.loading = false;
     });
   }
 

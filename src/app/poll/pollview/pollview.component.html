@@ -1,10 +1,14 @@
 <!-- display poll question on poll profile page-->
-<div *ngIf="item" class="mt-5 mb-4">
+<div class="mt-5" *ngIf="loading">
+    LOADING... 
+</div>
+
+<div *ngIf="item && !loading" class="mt-5 mb-4">
     <p style="font-size: 25px;" class="lead"><b class="text-break">{{item.question}}</b></p>
     <p style="font-size: 20px;" class="lead mt-5 text-break">Created By: {{item.userName}}</p>
 </div>
 
-<div *ngIf="item" class="row">
+<div *ngIf="item && !loading" class="row">
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div *ngFor="let option of item_options; let i = index;" class="row">
             <div *ngIf="option.value" (click)="postVote(item._id, i+1)" class="col-12">
